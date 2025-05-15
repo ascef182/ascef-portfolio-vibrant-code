@@ -1,7 +1,7 @@
 
 import CustomButton from "@/components/CustomButton";
 import { useEffect, useState } from "react";
-import { Github, Code, Award } from "lucide-react";
+import { Github, Code, Award, Instagram, Twitter, Facebook, Smartphone as WhatsApp, PersonCircle, UserPlus as PersonAdd } from "lucide-react";
 
 const Index = () => {
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; speed: number }>>([]);
@@ -55,10 +55,31 @@ const Index = () => {
         ))}
       </div>
       
-      {/* Conteúdo principal */}
-      <div className="text-center mb-12 fade-in" style={{ animationDelay: "0.2s" }}>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3">Meu Portfólio</h1>
-        <p className="text-lg md:text-xl text-gray-300">Escolha uma área para explorar</p>
+      {/* Profile Card */}
+      <div className="profile-container mb-12 fade-in" style={{ animationDelay: "0.2s" }}>
+        <div className="profile-card">
+          <div className="front">
+            <div className="card-top">
+              <p className="card-top-para">Profile</p>
+            </div>
+            
+            <PersonCircle size={100} color="currentColor" />
+            <p className="heading">Front Card</p>
+            <p className="follow">Follow me for more...</p>
+          </div>
+          <div className="back">
+            <p className="heading">Follow Me</p>
+            
+            <PersonAdd size={100} color="currentColor" />
+            
+            <div className="icons">
+              <Instagram size={32} color="currentColor" />
+              <Twitter size={32} color="currentColor" />
+              <WhatsApp size={32} color="currentColor" />
+              <Facebook size={32} color="currentColor" />
+            </div>
+          </div>
+        </div>
       </div>
       
       {/* Glass Cards */}
