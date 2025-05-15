@@ -1,6 +1,7 @@
 
 import CustomButton from "@/components/CustomButton";
 import { useEffect, useState } from "react";
+import { Github, Code, Award } from "lucide-react";
 
 const Index = () => {
   const [particles, setParticles] = useState<Array<{ id: number; x: number; y: number; size: number; speed: number }>>([]);
@@ -58,6 +59,19 @@ const Index = () => {
       <div className="text-center mb-12 fade-in" style={{ animationDelay: "0.2s" }}>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3">Meu Portfólio</h1>
         <p className="text-lg md:text-xl text-gray-300">Escolha uma área para explorar</p>
+      </div>
+      
+      {/* Glass Cards */}
+      <div className="glass-container mb-8 fade-in" style={{ animationDelay: "0.3s" }}>
+        <div data-text="Github" style={{ transform: "rotate(-15deg)" }} className="glass-card">
+          <Github className="text-white" size={40} />
+        </div>
+        <div data-text="Code" style={{ transform: "rotate(5deg)" }} className="glass-card">
+          <Code className="text-white" size={40} />
+        </div>
+        <div data-text="Earn" style={{ transform: "rotate(25deg)" }} className="glass-card">
+          <Award className="text-white" size={40} />
+        </div>
       </div>
       
       <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full max-w-3xl px-6">
