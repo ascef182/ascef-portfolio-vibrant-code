@@ -42,6 +42,22 @@ const FrontendPortfolio = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Função para envio do formulário
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const response = await fetch('https://formspree.io/f/xvgalzkq', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      alert('Mensagem enviada com sucesso!');
+    } else {
+      alert('Erro ao enviar mensagem.');
+    }
+  };
+
   return (
     <div className="min-h-screen bg-[#0e0e0e] text-white pb-16">
       {/* Botão de voltar */}
@@ -239,23 +255,24 @@ const FrontendPortfolio = () => {
           <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">{t.frontend.contact}</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-gray-300 mb-2">Nome</label>
-                  <Input className="bg-white/5 border-white/10 text-white" placeholder="Seu nome" />
+                  <Input className="bg-white/5 border-white/10 text-white" placeholder="Seu nome" name="name" />
                 </div>
                 <div>
                   <label className="block text-gray-300 mb-2">Email</label>
-                  <Input className="bg-white/5 border-white/10 text-white" placeholder="seu@email.com" type="email" />
+                  <Input className="bg-white/5 border-white/10 text-white" placeholder="seu@email.com" type="email" name="email" />
                 </div>
                 <div>
                   <label className="block text-gray-300 mb-2">Mensagem</label>
                   <textarea 
                     className="w-full bg-white/5 border-white/10 text-white rounded-md p-2 h-32 focus:ring-2 focus:ring-purple-500 focus:outline-none"
                     placeholder="Sua mensagem"
+                    name="message"
                   />
                 </div>
-                <Button className="bg-purple-600 hover:bg-purple-700">{t.frontend.sendMessage}</Button>
+                <Button className="bg-purple-600 hover:bg-purple-700" type="submit">{t.frontend.sendMessage}</Button>
               </form>
             </div>
             

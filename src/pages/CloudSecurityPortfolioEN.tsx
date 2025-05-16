@@ -36,6 +36,22 @@ const CloudSecurityPortfolioEN = () => {
     return () => observer.disconnect();
   }, []);
   
+  // Função para envio do formulário
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const response = await fetch('https://formspree.io/f/xvgalzkq', {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      alert('Message sent successfully!');
+    } else {
+      alert('Error sending message.');
+    }
+  };
+  
   return (
     <div className="min-h-screen bg-[#0e0e0e] text-white pb-16">
       <div className="fixed top-6 left-6 z-10">
@@ -283,23 +299,24 @@ const CloudSecurityPortfolioEN = () => {
           <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">Contact</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div>
                   <label className="block text-gray-300 mb-2">Name</label>
-                  <Input className="bg-white/5 border-white/10 text-white" placeholder="Your name" />
+                  <Input className="bg-white/5 border-white/10 text-white" placeholder="Your name" name="name" />
                 </div>
                 <div>
                   <label className="block text-gray-300 mb-2">Email</label>
-                  <Input className="bg-white/5 border-white/10 text-white" placeholder="your@email.com" type="email" />
+                  <Input className="bg-white/5 border-white/10 text-white" placeholder="your@email.com" type="email" name="email" />
                 </div>
                 <div>
                   <label className="block text-gray-300 mb-2">Message</label>
                   <textarea 
                     className="w-full bg-white/5 border-white/10 text-white rounded-md p-2 h-32 focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     placeholder="Your message"
+                    name="message"
                   />
                 </div>
-                <Button className="bg-blue-600 hover:bg-blue-700">Send Message</Button>
+                <Button className="bg-blue-600 hover:bg-blue-700" type="submit">Send Message</Button>
               </form>
             </div>
             
