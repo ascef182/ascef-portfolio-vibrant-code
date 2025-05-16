@@ -10,9 +10,7 @@ const Index = () => {
   const flags = [
     { code: 'pt', emoji: '🇧🇷', label: 'Português' },
     { code: 'en', emoji: '🇺🇸', label: 'English' },
-    { code: 'es', emoji: '🇪🇸', label: 'Español' },
-    { code: 'it', emoji: '🇮🇹', label: 'Italiano' },
-    { code: 'fr', emoji: '🇫🇷', label: 'Français' },
+
   ];
   
   // Criação das partículas de fundo
@@ -143,10 +141,16 @@ const Index = () => {
       
       <div className="flex flex-col md:flex-row gap-6 md:gap-10 w-full max-w-3xl px-6">
         <div className="w-full fade-in" style={{ animationDelay: "0.4s" }}>
-          <CustomButton to="/frontend" label="Front-End " />
+          <CustomButton
+            to={language === 'en' ? "/frontend/en" : "/frontend"}
+            label="Front-End"
+          />
         </div>
         <div className="w-full fade-in" style={{ animationDelay: "0.6s" }}>
-          <CustomButton to="/cloud-security" label="Cloud/Security " />
+          <CustomButton
+            to={language === 'en' ? "/cloud-security/en" : "/cloud-security"}
+            label="Cloud/Security"
+          />
         </div>
       </div>
     </div>
