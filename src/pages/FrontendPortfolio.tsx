@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -6,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Github, Linkedin, Instagram, ArrowLeft } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "@/contexts/useTranslation";
 
 const FrontendPortfolio = () => {
   // Estado para controlar animações na rolagem
@@ -15,6 +15,8 @@ const FrontendPortfolio = () => {
     projects: false,
     contact: false,
   });
+  
+  const t = useTranslation();
   
   // Observer para detectar elementos visíveis
   useEffect(() => {
@@ -56,14 +58,14 @@ const FrontendPortfolio = () => {
         <div className="flex flex-col items-center justify-center py-16">
           <div className="relative mb-8">
             <Avatar className="h-32 w-32 ring-4 ring-purple-500/30 pulse">
-              <AvatarImage src="https://i.pravatar.cc/300" />
+              <AvatarImage src="/pam.jpeg" className="object-cover w-full h-full" />
               <AvatarFallback>DP</AvatarFallback>
             </Avatar>
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">Desenvolvedor Front-End</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center">{t.frontend.hero}</h1>
           <p className="text-xl text-gray-300 max-w-2xl text-center">
-            Criando experiências digitais com foco em design e performance
+            {t.frontend.heroDesc}
           </p>
         </div>
 
@@ -74,7 +76,7 @@ const FrontendPortfolio = () => {
             visibleSections.about ? "fade-in" : "opacity-0"
           }`}
         >
-          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">Sobre Mim</h2>
+          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">{t.frontend.about}</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <p className="mb-4 text-lg">
@@ -89,7 +91,7 @@ const FrontendPortfolio = () => {
               </p>
             </div>
             <div>
-              <h3 className="text-xl font-semibold mb-3">Habilidades</h3>
+              <h3 className="text-xl font-semibold mb-3">{t.frontend.skills}</h3>
               <div className="flex flex-wrap gap-2">
                 {["HTML5", "CSS3", "JavaScript", "TypeScript", "React", "Tailwind CSS", "Next.js", "Redux", "Git"].map((skill) => (
                   <span key={skill} className="bg-white/10 px-3 py-1 rounded-full text-sm">
@@ -108,24 +110,29 @@ const FrontendPortfolio = () => {
             visibleSections.education ? "fade-in" : "opacity-0"
           }`}
         >
-          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">Educação</h2>
+          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">{t.frontend.education}</h2>
           <div className="space-y-6">
             <div className="border-l-2 border-purple-500 pl-4">
-              <h3 className="text-xl font-semibold">Bacharelado em Ciência da Computação</h3>
-              <p className="text-gray-300">Universidade Federal, 2018-2022</p>
-              <p className="mt-2">Foco em desenvolvimento de software e interfaces de usuário.</p>
+              <h3 className="text-xl font-semibold">Bacharelado em Tecnologia em Gestão Ambiental</h3>
+              <p className="text-gray-300">Universidade Federal de Viçosa- Campus Florestal, 2016-2019</p>
+              <p className="mt-2">Iniciação em programação, recursos naturais, sistemas agroflorestais, Leis ambientais, técnico em segurança do trabalho</p>
             </div>
             
             <div className="border-l-2 border-purple-500 pl-4">
-              <h3 className="text-xl font-semibold">Bootcamp Full Stack Development</h3>
-              <p className="text-gray-300">Digital Academy, 2021</p>
-              <p className="mt-2">Projeto final premiado com menção honrosa.</p>
+              <h3 className="text-xl font-semibold">Full Stack Java Developer</h3>
+              <p className="text-gray-300">Faculdade Vincit, 2022-2023</p>
+              <p className="mt-2">Java, Javascript, SQL, Angular, Html, Css, React, Kubernet, Docker, Git, GitHub, Nuvem(GCP, Azure, AWS)</p>
             </div>
             
             <div className="border-l-2 border-purple-500 pl-4">
-              <h3 className="text-xl font-semibold">Certificação React Developer</h3>
-              <p className="text-gray-300">Meta, 2023</p>
-              <p className="mt-2">Especialização em desenvolvimento com React e ecossistema moderno.</p>
+              <h3 className="text-xl font-semibold">Google Cloud Cybersecurity</h3>
+              <p className="text-gray-300">CloudBoost Skills, 2025</p>
+              <p className="mt-2">Linux para nuvem, Terraform, VPC, TCP, Firewall, SSH, Docker, CI/CD, Resposta a Incidentes, Cloud Security, BigQuery, Auditorias, Leis de conformidade, frameworks</p>
+            </div>
+            <div className="border-l-2 border-purple-500 pl-4">
+              <h3 className="text-xl font-semibold">Ethical Hacking</h3>
+              <p className="text-gray-300">Cisco NetAcademy, 2025 (em andamento)</p>
+              <p className="mt-2">Comandos Linux, Vulnerabilidades, OSAP 10, Mitre ATTACK, Nmap, Metasploit, Wireshark, SQL Injection, XSS, CSRF, Phishing, Redes, Segurança da Informação, Cibersegurança</p>
             </div>
           </div>
         </section>
@@ -137,49 +144,85 @@ const FrontendPortfolio = () => {
             visibleSections.projects ? "fade-in" : "opacity-0"
           }`}
         >
-          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">Projetos</h2>
+          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">{t.frontend.projects}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                title: "E-commerce Dashboard",
-                description: "Painel administrativo para lojas virtuais com análise de dados.",
-                tech: ["React", "Redux", "Recharts"],
-                link: "#"
+                id: "mcdonalds-checkout",
+                title: "McDonald's Checkout",
+                description: "Sistema de checkout moderno e intuitivo para o McDonald's, com interface responsiva e experiência de usuário otimizada.",
+                tech: ["React", "TypeScript", "TailwindCSS", "Next.js"],
+                imageUrl: "/mcdonalds.png",
+                githubUrl: "https://github.com/ascef182/mcdonalds_0",
+                liveUrl: "https://fullstackweek-donalds.vercel.app/fsw-donalds"
               },
               {
-                title: "App de Clima",
-                description: "Aplicação de previsão do tempo com geolocalização.",
-                tech: ["React", "TypeScript", "TailwindCSS"],
-                link: "#"
+                id: "coffee-trading",
+                title: "Coffee Trading Platform",
+                description: "Plataforma multilíngue para exportação de café, com suporte a múltiplos idiomas e design moderno.",
+                tech: ["React", "TypeScript", "i18n", "TailwindCSS"],
+                imageUrl: "/cazarini.png",
+                githubUrl: "https://github.com/ascef182/Trading-coffe-beans",
+                liveUrl: "https://trading-coffe-beans.vercel.app/"
               },
               {
-                title: "Portfolio Hub",
-                description: "Plataforma para criação de portfólios para criativos.",
-                tech: ["Next.js", "MongoDB", "AWS"],
-                link: "#"
+                id: "vigilant-sentinel",
+                title: "Vigilant Sentinel Eye",
+                description: "Plataforma de detecção de ameaças cibernéticas com IA, integração com AlienVault OTX e VirusTotal, e dashboard interativo.",
+                tech: ["React", "TypeScript", "AI Integration", "Security APIs"],
+                imageUrl: "/sentinel.png",
+                githubUrl: "https://github.com/ascef182/vigilant-sentinel-eye",
+                liveUrl: "https://vigilant-sentinel-eye.vercel.app"
               },
-            ].map((project, index) => (
-              <Card key={index} className="glass border-none overflow-hidden hover:shadow-purple-500/20 hover:shadow-lg transition-all">
+              {
+                id: "finance-ai",
+                title: "Finance.ai",
+                description: "Plataforma de gerenciamento financeiro pessoal com IA, gerando relatórios mensais e sugestões personalizadas.",
+                tech: ["React", "TypeScript", "AI Integration", "Data Visualization"],
+                imageUrl: "/financeai.png",
+                githubUrl: "https://github.com/ascef182/finance-ai",
+                liveUrl: "https://finance-ai.vercel.app"
+              }
+            ].map((project) => (
+              <Card key={project.id} className="glass border-none overflow-hidden hover:shadow-purple-500/20 hover:shadow-lg transition-all h-[500px] flex flex-col">
                 <CardHeader className="pb-2">
-                  <CardTitle>{project.title}</CardTitle>
+                  <CardTitle className="text-white text-xl font-bold">{project.title}</CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <p className="text-gray-300 mb-4">{project.description}</p>
+                <CardContent className="flex flex-col flex-grow">
+                  <div className="w-full h-48 bg-[#181818] flex items-center justify-center rounded-lg mb-4 overflow-hidden">
+                    <img 
+                      src={project.imageUrl} 
+                      alt={project.title} 
+                      className="object-cover w-full h-full hover:scale-105 transition-transform duration-300" 
+                    />
+                  </div>
+                  <p className="text-white mb-4 text-sm line-clamp-3">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.tech.map((tech) => (
-                      <span key={tech} className="bg-white/5 px-2 py-1 rounded text-xs">
+                      <span key={tech} className="bg-white/10 px-2 py-1 rounded text-xs text-white">
                         {tech}
                       </span>
                     ))}
                   </div>
-                  <a 
-                    href={project.link} 
-                    className="text-purple-400 hover:text-purple-300 text-sm flex items-center gap-1"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    Ver projeto
-                  </a>
+                  <div className="mt-auto flex gap-4">
+                    <a 
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white underline text-sm flex items-center gap-1 hover:text-purple-300"
+                    >
+                      <Github size={16} />
+                      GitHub
+                    </a>
+                    <a 
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white underline text-sm flex items-center gap-1 hover:text-purple-300"
+                    >
+                      Demo
+                    </a>
+                  </div>
                 </CardContent>
               </Card>
             ))}
@@ -193,7 +236,7 @@ const FrontendPortfolio = () => {
             visibleSections.contact ? "fade-in" : "opacity-0"
           }`}
         >
-          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">Contato</h2>
+          <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">{t.frontend.contact}</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div>
               <form className="space-y-4">
@@ -212,15 +255,15 @@ const FrontendPortfolio = () => {
                     placeholder="Sua mensagem"
                   />
                 </div>
-                <Button className="bg-purple-600 hover:bg-purple-700">Enviar Mensagem</Button>
+                <Button className="bg-purple-600 hover:bg-purple-700">{t.frontend.sendMessage}</Button>
               </form>
             </div>
             
             <div>
               <h3 className="text-xl font-semibold mb-3">Redes Sociais</h3>
               <div className="space-y-4">
-                <a 
-                  href="#" 
+              <a 
+                  href="https://www.linkedin.com/in/pamelaascefcazarini/" 
                   className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -229,7 +272,7 @@ const FrontendPortfolio = () => {
                   <span>LinkedIn</span>
                 </a>
                 <a 
-                  href="#" 
+                  href="https://github.com/ascef182?tab=repositories" 
                   className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
                   target="_blank" 
                   rel="noopener noreferrer"
@@ -237,15 +280,7 @@ const FrontendPortfolio = () => {
                   <Github size={24} />
                   <span>GitHub</span>
                 </a>
-                <a 
-                  href="#" 
-                  className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <Instagram size={24} />
-                  <span>Instagram</span>
-                </a>
+                
               </div>
             </div>
           </div>

@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -8,25 +7,30 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import FrontendPortfolio from "./pages/FrontendPortfolio";
 import CloudSecurityPortfolio from "./pages/CloudSecurityPortfolio";
+import ProjectDetails from "./pages/ProjectDetails";
+import { LanguageProvider } from "./contexts/LanguageContext";
 
 const queryClient = new QueryClient();
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/frontend" element={<FrontendPortfolio />} />
-          <Route path="/cloud-security" element={<CloudSecurityPortfolio />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+  <LanguageProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/frontend" element={<FrontendPortfolio />} />
+            <Route path="/cloud-security" element={<CloudSecurityPortfolio />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
+            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </LanguageProvider>
 );
 
 export default App;
