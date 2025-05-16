@@ -152,9 +152,7 @@ const CloudSecurityPortfolio = () => {
         {/* Projetos */}
         <section 
           id="projects" 
-          className={`mb-12 transition-all duration-700 ${
-            visibleSections.projects ? "fade-in" : "opacity-0"
-          }`}
+          className={`mb-12 transition-all duration-700 fade-in`}
         >
           <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">{t.cloud.projects}</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -241,7 +239,7 @@ const CloudSecurityPortfolio = () => {
                 liveUrl: "https://cloud-security-demo.vercel.app/vulnerability-management"
               }
             ].map((project) => (
-              <Card key={project.id} className="glass border-none overflow-hidden hover:shadow-blue-500/20 hover:shadow-lg transition-all h-[500px] flex flex-col">
+              <Card key={project.id} className="glass border-none overflow-hidden hover:shadow-purple-500/20 hover:shadow-lg transition-all h-[500px] flex flex-col">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-white text-xl font-bold">{project.title}</CardTitle>
                 </CardHeader>
@@ -266,7 +264,7 @@ const CloudSecurityPortfolio = () => {
                       href={project.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white underline text-sm flex items-center gap-1 hover:text-blue-300"
+                      className="text-white underline text-sm flex items-center gap-1 hover:text-purple-300"
                     >
                       <Github size={16} />
                       GitHub
@@ -275,7 +273,7 @@ const CloudSecurityPortfolio = () => {
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-white underline text-sm flex items-center gap-1 hover:text-blue-300"
+                      className="text-white underline text-sm flex items-center gap-1 hover:text-purple-300"
                     >
                       Demo
                     </a>

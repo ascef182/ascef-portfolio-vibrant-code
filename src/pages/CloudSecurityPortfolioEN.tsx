@@ -113,7 +113,7 @@ const CloudSecurityPortfolioEN = () => {
           }`}
         >
           <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">Areas of Expertise</h2>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 bg-white/5 rounded-lg border border-white/10 flex flex-col items-center text-center">
               <Cloud className="w-12 h-12 text-blue-400 mb-4" />
               <h3 className="text-xl font-semibold mb-2">Cloud Architecture</h3>
@@ -142,12 +142,10 @@ const CloudSecurityPortfolioEN = () => {
 
         <section 
           id="projects" 
-          className={`mb-12 transition-all duration-700 ${
-            visibleSections.projects ? "fade-in" : "opacity-0"
-          }`}
+          className={`mb-12 transition-all duration-700 fade-in`}
         >
           <h2 className="text-3xl font-bold mb-6 border-b border-white/10 pb-2">Projects</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
                 id: "access-firewall-create-rule",
